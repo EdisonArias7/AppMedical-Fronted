@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
         icon: 'pi pi-fw pi-calendar',
         items: [
           {
-            label: 'Modificar cita',
+            label: 'Agregar cita',
+            routerLink: ["add-appointment"],
             icon: 'pi pi-fw pi-plus',
           },
           {
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
         items: [
           {
             label: 'Nuevo médico',
+            routerLink: ["add-doctor"],
             icon: 'pi pi-fw pi-user-plus',
           },
           {

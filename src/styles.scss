@@ -1,16 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-.ui-chips {
-  display: inline-block;
+.formulario {
+  position: static;
+  width: 450px;
+  height: 700px;
+  background-color: white;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
 }
 
-.ui-chips ul {
-  border: 2px dashed green !important; /* 👈 I have use important */
+.center-horizontal {
+  display: flex;
+  justify-content: center;
 }
 
-.ui-chips > ul.ui-inputtext .ui-chips-token {
-  font-size: 14px;
-  background: green !important; /* 👈 I have use important */
-  border: 1px solid #005555;
-  box-shadow: 0 0 25px #ccc;
+.crearPaciente {
+  font-size: 33px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
 }
+
+.toolbar {
+  height: 60px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
