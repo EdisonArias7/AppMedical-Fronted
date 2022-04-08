@@ -13,17 +13,19 @@
 </div>
 
 <div class="center-horizontal" style="padding: 15px">
-  <div class="formulario">
+  <div class="formulario" >
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form">
+
+          <form class="example-form" [formGroup]="form_patient">
             <div class="field col-12 md:col-4">
               <h5>Cedula</h5>
               <input
                 type="text"
-                inputId="inputnumber"
+                id="inputtext"
                 pInputText
+                formControlName="id_patient"
                 placeholder="Ingrese su cedula"
               />
             </div>
@@ -34,6 +36,7 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="name_patient"
                 placeholder="Ingrese su nombre"
               />
             </div>
@@ -43,6 +46,7 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="lastname_patient"
                 placeholder="Ingrese su apellido"
               />
             </div>
@@ -52,6 +56,7 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="sexo_patient"
                 placeholder="Ingrese su genero"
               />
             </div>
@@ -62,6 +67,7 @@
                 type="text"
                 inputId="inputnumber"
                 pInputText
+                formControlName="telefono_patient"
                 placeholder="Ingrese su telefono"
               />
             </div>
@@ -72,13 +78,15 @@
                   type="text"
                   id="inputtext"
                   pInputText
+                  formControlName="direccion_patient"
                   placeholder="Ingrese su direccion"
                 />
               </div>
           </form>
         </div>
       </div>
-      <button pButton type="button" label="Agregar"></button>
+      <button pButton type="button"
+      (click)="registro()" label="Agregar Paciente"></button>
     </div>
   </div>
 </div>
