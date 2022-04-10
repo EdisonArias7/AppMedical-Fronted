@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DoctorService } from 'src/app/services/doctor.service';
-
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormArray,
+} from '@angular/forms';
+import {
+  DoctorService,
+} from '../../../../../services/doctor.service';
 @Component({
   selector: 'app-add-doctor',
   templateUrl: './add-doctor.component.html',
@@ -10,7 +17,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 export class AddDoctorComponent implements OnInit {
 
   form_doctor: FormGroup;
-  SERVER_URL = 'http://localhost:3000/doctors';
+  SERVER_URL = 'http://localhost:3000/doctor';
 
   constructor(private fb: FormBuilder, private doctorService: DoctorService) { 
     this.form_doctor = new FormGroup({
@@ -33,6 +40,24 @@ export class AddDoctorComponent implements OnInit {
     }
     console.log(this.form_doctor.value);
     const data = this.form_doctor.value;
+
+    setTimeout(() => {
+      
+      const body = {
+        id_doctor: this.form_doctor.get('id_doctor').value,
+        name_doctor: this.form_doctor.get('name_doctor').value,
+        lastname_doctor: this.form_doctor.get('lastname_doctor').value,
+        cedula_doctor: this.form_doctor.get('cedula_doctor').value,
+        telefono_doctor: this.form_doctor.get('telefono_doctor').value,
+        direccion_doctor: this.form_doctor.get('direccion_doctor').value
+      };
+
+      this.doctorService.registerDoctor(body)
+        .subscribe((resp) => {
+          console.log(resp);
+        });
+      this.form_doctor.reset();
+    }, 1000);
   }
 
 }

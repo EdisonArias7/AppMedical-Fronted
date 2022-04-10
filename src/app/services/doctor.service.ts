@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { responseDoctor } from 'src/app/features/admin/components/doctor/interfaces/patient.interface';
+import { responseDoctor } from 'src/app/features/admin/components/doctor/interfaces/doctor.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { responseDoctor } from 'src/app/features/admin/components/doctor/interfa
 export class DoctorService {
 
   constructor(private http: HttpClient) { }
-  path: string = 'http://localhost:3000/api/doctors';
+  path: string = 'http://localhost:3000/api/doctor';
 
   getDoctor(): Promise<any> {
     return this.http.get<any>(this.path).toPromise();
@@ -28,9 +28,13 @@ export class DoctorService {
   }
 
   registerDoctor(data: any): Observable<any> {
-    return this.http.post(`${this.path}/add-artist`, data);
+    return this.http.post(`${this.path}/add-doctor`, data);
   }
   getAllDoctors(): Observable <responseDoctor> {
     return this.http.get<responseDoctor>(this.path);
+  }
+
+  getAll():Promise<any>{
+    return this.http.get<any>(this.path).toPromise();
   }
 }
