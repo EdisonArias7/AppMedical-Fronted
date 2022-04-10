@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
           },
           {
             label: 'Listar pacientes',
+            routerLink: ["view-patients"],
             icon: 'pi pi-fw pi-users',
           },
         ],

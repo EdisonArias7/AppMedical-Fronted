@@ -1,1 +1,33 @@
-<p>view-list-patient works!</p>
+
+  <div class="card">
+    <h5>Lista de Pacientes</h5>
+    <p-table [value]="patients" editMode="row">
+        <ng-template pTemplate="header" let-rows>
+            <tr >
+                <th pSortableColumn="id">Id<p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="nombre">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="apellido">Apellido<p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="sexo">Sexo<p-sortIcon field="quantity"></p-sortIcon></th>
+                <th pSortableColumn="telefono">Telefono<p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="Direccion">Direccion<p-sortIcon field="price"></p-sortIcon></th>
+
+                <th pSortableColumn="Opciones">Opciones<p-sortIcon field="price"></p-sortIcon></th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="rowData">
+                <td>{{rowData.id_patient}}</td>
+                <td>{{rowData.name_patient}}</td>
+                <td>{{rowData.lastname_patient}}</td>
+                <td>{{rowData.sexo_patient}}</td>
+                <td>{{rowData.telefono_patient}}</td>
+                <td>{{rowData.direccion_patient}}</td>
+                <td >
+                    <button  (click)="modify(rowData)" class="pi pi-user-edit" aria-label="Editar">Editar</button>
+                    <button  (click)= "delete(rowData)" class="pi pi-user-minus" aria-label="Eliminar">Eliminar</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

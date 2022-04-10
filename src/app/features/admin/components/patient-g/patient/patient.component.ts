@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -17,7 +18,7 @@ import {
 })
 export class PatientComponent implements OnInit {
   form_patient: FormGroup;
-  SERVER_URL = 'http://localhost:3000/patients';
+  SERVER_URL = 'http://localhost:3000/api/patient';
 
   constructor(private fb: FormBuilder, private patientService: PatientService) {
     this.form_patient = new FormGroup({
@@ -40,5 +41,23 @@ export class PatientComponent implements OnInit {
     }
     console.log(this.form_patient.value);
     const data = this.form_patient.value;
+
+    setTimeout(() => {
+      
+      const body = {
+        id_patient: this.form_patient.get('id_patient').value,
+        name_patient: this.form_patient.get('name_patient').value,
+        lastname_patient: this.form_patient.get('lastname_patient').value,
+        sexo_patient: this.form_patient.get('sexo_patient').value,
+        telefono_patient: this.form_patient.get('telefono_patient').value,
+        direccion_patient: this.form_patient.get('direccion_patient').value
+      };
+
+      this.patientService.registerPatient(body)
+        .subscribe((resp) => {
+          console.log(resp);
+        });
+      this.form_patient.reset();
+    }, 1000);
   }
 }

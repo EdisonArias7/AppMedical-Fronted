@@ -9,7 +9,7 @@ import { responsePatient } from 'src/app/features/admin/components/patient-g/int
 export class PatientService {
 
   constructor(private http: HttpClient) { }
-  path: string = 'http://localhost:3000/api/patients';
+  path: string = 'http://localhost:3000/api/patient';
 
   getPatient(): Promise<any> {
     return this.http.get<any>(this.path).toPromise();
@@ -28,9 +28,14 @@ export class PatientService {
   }
 
   registerPatient(data: any): Observable<any> {
-    return this.http.post(`${this.path}/add-artist`, data);
+    return this.http.post(`${this.path}/add-patient`, data);
   }
+
   getAllPatients(): Observable <responsePatient> {
     return this.http.get<responsePatient>(this.path);
+  }
+
+  getAll():Promise<any>{
+    return this.http.get<any>(this.path).toPromise();
   }
 }
