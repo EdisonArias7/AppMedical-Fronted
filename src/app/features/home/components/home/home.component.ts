@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
           },
           {
             label: 'Listar médicos',
+            routerLink: ["view-doctors"],
             icon: 'pi pi-fw pi-users',
           },
         ],
