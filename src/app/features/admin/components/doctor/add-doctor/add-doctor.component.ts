@@ -21,11 +21,11 @@ export class AddDoctorComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private doctorService: DoctorService) { 
     this.form_doctor = new FormGroup({
-      id_doctor: new FormControl('', [Validators.required]),
-      name_doctor: new FormControl('', [Validators.required]),
-      lastname_doctor: new FormControl('', [Validators.required]),
-      cedula_doctor: new FormControl('', [Validators.required]),
-      telefono_doctor: new FormControl('', [Validators.required]),
+      id_doctor: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
+      name_doctor: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
+      lastname_doctor: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
+      cedula_doctor: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
+      telefono_doctor: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
       direccion_doctor: new FormControl('', [Validators.required]),
     });
   }

@@ -15,6 +15,8 @@ import { TableModule } from 'primeng/table';
 import { ChipsModule } from 'primeng/chips';
 import { CalendarModule } from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 import { HomeComponent } from './features/home/components/home/home.component';
 import { CarouselComponent } from './features/home/components/carousel/carousel.component';
@@ -57,7 +59,9 @@ import { ViewListAppointmentComponent } from './features/admin/components/appoin
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

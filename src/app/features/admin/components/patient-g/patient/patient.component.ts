@@ -22,11 +22,11 @@ export class PatientComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private patientService: PatientService) {
     this.form_patient = new FormGroup({
-      id_patient: new FormControl('', [Validators.required]),
-      name_patient: new FormControl('', [Validators.required]),
-      lastname_patient: new FormControl('', [Validators.required]),
-      sexo_patient: new FormControl('', [Validators.required]),
-      telefono_patient: new FormControl('', [Validators.required]),
+      id_patient: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
+      name_patient: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
+      lastname_patient: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
+      sexo_patient: new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]),
+      telefono_patient: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
       direccion_patient: new FormControl('', [Validators.required]),
     });
     

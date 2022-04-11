@@ -13,8 +13,9 @@ import { AppointmentService } from '../../../../../services/appointment.service'
 })
 export class AddAppointmentComponent implements OnInit {
   rangeDates: Date[] = [];
-  minDate: Date = new Date();
+  minDate = new Date('04/11/2022'); //Jan 1 2016
   maxDate: Date = new Date();
+  
 
   form_appointment: FormGroup;
   patientList: Patient[] = [];
@@ -26,7 +27,7 @@ export class AddAppointmentComponent implements OnInit {
     private appointmentService: AppointmentService,
     private fb: FormBuilder) {
       this.form_appointment = new FormGroup({
-        id_appointment: new FormControl('', [Validators.required]),
+        id_appointment: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
         hora_appointment: new FormControl('', [Validators.required]),
         fecha_appointment: new FormControl('', [Validators.required]),
         id_patient: new FormControl('', [Validators.required]),
@@ -35,7 +36,15 @@ export class AddAppointmentComponent implements OnInit {
       });
     }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+
+    var current_date = new Date().toISOString().split('T')[0];
+    
+    document
+      .getElementsByName('appo_date')[0]
+      .setAttribute('mindate', current_date);
+    
     let today = new Date();
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -44,8 +53,7 @@ export class AddAppointmentComponent implements OnInit {
     let nextMonth = month === 11 ? 0 : month + 1;
     let nextYear = nextMonth === 0 ? year + 1 : year;
     this.minDate = new Date();
-    this.minDate.setMonth(prevMonth);
-    this.minDate.setFullYear(prevYear);
+    
     this.maxDate = new Date();
     this.maxDate.setMonth(nextMonth);
     this.maxDate.setFullYear(nextYear);
