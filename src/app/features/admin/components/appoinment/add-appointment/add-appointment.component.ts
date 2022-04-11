@@ -13,7 +13,8 @@ import { AppointmentService } from '../../../../../services/appointment.service'
 })
 export class AddAppointmentComponent implements OnInit {
   rangeDates: Date[] = [];
-  minDate = new Date('04/11/2022'); //Jan 1 2016
+  minDate = new Date();
+  minDate2 = new Date(); //Jan 1 2016
   maxDate: Date = new Date();
   
 
@@ -38,9 +39,12 @@ export class AddAppointmentComponent implements OnInit {
 
   ngOnInit() {
 
-
     var current_date = new Date().toISOString().split('T')[0];
-    
+    var time = new Date().toLocaleTimeString();
+
+    this.minDate = new Date(current_date);
+    this.minDate2 = new Date(time);
+
     document
       .getElementsByName('appo_date')[0]
       .setAttribute('mindate', current_date);
