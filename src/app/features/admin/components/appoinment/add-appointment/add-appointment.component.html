@@ -17,13 +17,15 @@
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form">
+
+            <form class="example-form" [formGroup]="form_appointment">
             <div class="field col-12 md:col-4">
               <h5>Id</h5>
               <input
                 type="text"
                 inputId="inputnumber"
                 pInputText
+                formControlName="id_appointment"
                 placeholder="Ingrese el identificador de cita"
               />
             </div>
@@ -34,15 +36,37 @@
                 [timeOnly]="true"
                 hourFormat="12"
                 inputId="timeonly"
+                formControlName="hora_appointment"
               ></p-calendar>
             </div>
 
             <div class="field col-12 md:col-4">
               <h5>Fecha de la cita</h5>
-              <p-calendar
-                [showIcon]="true"
-                inputId="icon"
-              ></p-calendar>
+              <p-calendar [showIcon]="true" inputId="icon" formControlName="fecha_appointment"></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+              <h5>Paciente</h5>
+              <p-dropdown
+                [options]="patientList"
+                placeholder="Seleccione un paciente"
+                optionLabel="id_patient"
+                [showClear]="true"
+                formControlName="id_patient"
+              >
+              </p-dropdown>
+            </div>
+
+            <div class="field col-12 md:col-4">
+              <h5>Medico</h5>
+              <p-dropdown
+                [options]="doctorList"
+                placeholder="Seleccione un medico"
+                optionLabel="id_doctor"
+                [showClear]="true"
+                formControlName="id_doctor"
+              >
+              </p-dropdown>
             </div>
 
             <div class="field col-12 md:col-4">
@@ -51,14 +75,15 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="consultorio_appointment"
                 placeholder="Ingrese el Consultorio"
               />
             </div>
-
           </form>
         </div>
       </div>
-      <button pButton type="button" label="Agregar"></button>
+      <button pButton type="button"
+      (click)="registro()" label="Agregar Cita"></button>
     </div>
   </div>
 </div>

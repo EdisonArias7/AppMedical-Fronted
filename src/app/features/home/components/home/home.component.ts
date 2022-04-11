@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
           },
           {
             label: 'Listar citas',
+            routerLink: ["view-appointments"],
             icon: 'pi pi-fw pi-calendar',
           },
         ],

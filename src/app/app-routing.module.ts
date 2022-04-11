@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddAppointmentComponent } from './features/admin/components/appoinment/add-appointment/add-appointment.component';
+import { ModifyAppointmentComponent } from './features/admin/components/appoinment/modify-appointment/modify-appointment.component';
+import { ViewListAppointmentComponent } from './features/admin/components/appoinment/view-list-appointment/view-list-appointment.component';
 import { AddDoctorComponent } from './features/admin/components/doctor/add-doctor/add-doctor.component';
 import { ModifyDoctorComponent } from './features/admin/components/doctor/modify-doctor/modify-doctor.component';
 import { ViewListDoctorComponent } from './features/admin/components/doctor/view-list-doctor/view-list-doctor.component';
@@ -20,7 +22,9 @@ const routes: Routes = [
       { path: 'view-patients', component: ViewListPatientComponent },
       { path: 'modify-patients', component: ModifyPatientComponent },
       { path: 'view-doctors', component: ViewListDoctorComponent },
-      { path: 'modify-doctors', component: ModifyDoctorComponent }
+      { path: 'modify-doctors', component: ModifyDoctorComponent },
+      { path: 'view-appointments', component: ViewListAppointmentComponent },
+      { path: 'modify-appointments', component: ModifyAppointmentComponent }
     ],
   },
 ];

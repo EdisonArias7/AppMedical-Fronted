@@ -14,6 +14,7 @@ import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { ChipsModule } from 'primeng/chips';
 import { CalendarModule } from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { HomeComponent } from './features/home/components/home/home.component';
 import { CarouselComponent } from './features/home/components/carousel/carousel.component';
@@ -25,6 +26,8 @@ import { AddAppointmentComponent } from './features/admin/components/appoinment/
 import { AddDoctorComponent } from './features/admin/components/doctor/add-doctor/add-doctor.component';
 import { ModifyDoctorComponent } from './features/admin/components/doctor/modify-doctor/modify-doctor.component';
 import { ViewListDoctorComponent } from './features/admin/components/doctor/view-list-doctor/view-list-doctor.component';
+import { ModifyAppointmentComponent } from './features/admin/components/appoinment/modify-appointment/modify-appointment.component';
+import { ViewListAppointmentComponent } from './features/admin/components/appoinment/view-list-appointment/view-list-appointment.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { ViewListDoctorComponent } from './features/admin/components/doctor/view
     AddDoctorComponent,
     ModifyDoctorComponent,
     ViewListDoctorComponent,
+    ModifyAppointmentComponent,
+    ViewListAppointmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { ViewListDoctorComponent } from './features/admin/components/doctor/view
     CalendarModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],
