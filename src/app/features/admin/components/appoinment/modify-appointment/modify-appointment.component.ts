@@ -42,7 +42,7 @@ export class ModifyAppointmentComponent implements OnInit {
     private routes: Router
   ) {
     this.form_appointment = new FormGroup({
-      id_appointment: new FormControl('', [Validators.required]),
+      id_appointment: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
       hora_appointment: new FormControl('', [Validators.required]),
       fecha_appointment: new FormControl('', [Validators.required]),
       id_patient: new FormControl('', [Validators.required]),

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,9 +13,11 @@ import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { ChipsModule } from 'primeng/chips';
 import { CalendarModule } from 'primeng/calendar';
-import {DropdownModule} from 'primeng/dropdown';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { DropdownModule } from 'primeng/dropdown';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { GalleriaModule } from 'primeng/galleria';
+import {ImageModule} from 'primeng/image';
 
 import { HomeComponent } from './features/home/components/home/home.component';
 import { CarouselComponent } from './features/home/components/carousel/carousel.component';
@@ -61,7 +62,9 @@ import { ViewListAppointmentComponent } from './features/admin/components/appoin
     ReactiveFormsModule,
     DropdownModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    GalleriaModule,
+    ImageModule
   ],
   providers: [],
   bootstrap: [AppComponent],

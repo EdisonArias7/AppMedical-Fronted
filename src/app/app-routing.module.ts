@@ -9,6 +9,7 @@ import { ViewListDoctorComponent } from './features/admin/components/doctor/view
 import { ModifyPatientComponent } from './features/admin/components/patient-g/modify-patient/modify-patient.component';
 import { PatientComponent } from './features/admin/components/patient-g/patient/patient.component';
 import { ViewListPatientComponent } from './features/admin/components/patient-g/view-list-patient/view-list-patient.component';
+import { CarouselComponent } from './features/home/components/carousel/carousel.component';
 import { HomeComponent } from './features/home/components/home/home.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+      { path: 'principal', component: CarouselComponent },
       { path: 'add-patient', component: PatientComponent },
       { path: 'add-doctor', component: AddDoctorComponent },
       { path: 'add-appointment', component: AddAppointmentComponent },

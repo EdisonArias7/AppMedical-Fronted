@@ -18,7 +18,7 @@
         <div class="card">
           <div class="p-fluid grid">
   
-              <form class="example-form" [formGroup]="form_appointment">
+              <form class="example-form" [formGroup]="form_appointment" #f="ngForm">
               <div class="field col-12 md:col-4">
                 <h5>Id</h5>
                 <input
@@ -27,7 +27,14 @@
                   pInputText
                   formControlName="id_appointment"
                   placeholder="Ingrese el identificador de cita"
+                  required="true"
                 />
+                <small
+                *ngIf="
+                  form_appointment.get('id_appointment').hasError('pattern')
+                "
+                >Por favor ingrese un formato valido(0-9)</small
+              >
               </div>
   
               <div class="field col-12 md:col-4">
@@ -82,11 +89,13 @@
             </form>
           </div>
         </div>
+        <br>
         <button
         pButton
         type="button"
         (click)="edit()"
         label="Modificar Cita"
+        [disabled]="f.invalid"
       ></button>
       </div>
     </div>

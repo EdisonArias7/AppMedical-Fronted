@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
+        label: 'Inicio',
+        routerLink: ["principal"],
+        icon: 'pi pi-fw pi-power-off'
+      },
+      {
         label: 'Pacientes',
         icon: 'pi pi-fw pi-user',
         items: [
@@ -61,10 +66,6 @@ export class HomeComponent implements OnInit {
             icon: 'pi pi-fw pi-users',
           },
         ],
-      },
-      {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off',
       },
     ];
   }

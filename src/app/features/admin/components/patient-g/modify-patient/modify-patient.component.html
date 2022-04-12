@@ -17,7 +17,7 @@
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form" [formGroup]="form_patient">
+          <form class="example-form" [formGroup]="form_patient" #f="ngForm">
             <div class="field col-12 md:col-4">
               <h5>Cedula</h5>
               <input
@@ -26,7 +26,11 @@
                 pInputText
                 formControlName="id_patient"
                 placeholder="Ingrese su cedula"
+                required="true"
               />
+              <small *ngIf="form_patient.get('id_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(0-9)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -37,7 +41,12 @@
                 pInputText
                 formControlName="name_patient"
                 placeholder="Ingrese su nombre"
+                required="true"
               />
+              <small
+                *ngIf="form_patient.get('name_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
             <div class="field col-12 md:col-4">
               <h5>Apellido</h5>
@@ -47,7 +56,12 @@
                 pInputText
                 formControlName="lastname_patient"
                 placeholder="Ingrese su apellido"
+                required="true"
               />
+              <small
+                *ngIf="form_patient.get('lastname_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
             <div class="field col-12 md:col-4">
               <h5>Sexo</h5>
@@ -57,7 +71,12 @@
                 pInputText
                 formControlName="sexo_patient"
                 placeholder="Ingrese su genero"
+                required="true"
               />
+              <small
+                *ngIf="form_patient.get('sexo_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -68,7 +87,12 @@
                 pInputText
                 formControlName="telefono_patient"
                 placeholder="Ingrese su telefono"
+                required="true"
               />
+              <small
+                *ngIf="form_patient.get('telefono_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(0-9)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -79,16 +103,25 @@
                 pInputText
                 formControlName="direccion_patient"
                 placeholder="Ingrese su direccion"
+                required="true"
               />
+              <small
+                *ngIf="
+                  form_patient.get('direccion_patient').hasError('pattern')
+                "
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
           </form>
         </div>
       </div>
+      <br>
       <button
         pButton
         type="button"
         (click)="edit()"
         label="Modificar Paciente"
+        [disabled]="f.invalid"
       ></button>
     </div>
   </div>
