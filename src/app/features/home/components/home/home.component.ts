@@ -15,6 +15,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
+        label: 'Inicio',
+        routerLink: ["principal"],
+        icon: 'pi pi-fw pi-power-off'
+      },
+      {
         label: 'Pacientes',
         icon: 'pi pi-fw pi-user',
         items: [
@@ -24,11 +29,8 @@ export class HomeComponent implements OnInit {
             icon: 'pi pi-fw pi-user-plus',
           },
           {
-            label: 'Modificar paciente',
-            icon: 'pi pi-fw pi-user-minus',
-          },
-          {
             label: 'Listar pacientes',
+            routerLink: ["view-patients"],
             icon: 'pi pi-fw pi-users',
           },
         ],
@@ -43,11 +45,8 @@ export class HomeComponent implements OnInit {
             icon: 'pi pi-fw pi-plus',
           },
           {
-            label: 'Modificar cita',
-            icon: 'pi pi-fw pi-pencil',
-          },
-          {
             label: 'Listar citas',
+            routerLink: ["view-appointments"],
             icon: 'pi pi-fw pi-calendar',
           },
         ],
@@ -62,18 +61,11 @@ export class HomeComponent implements OnInit {
             icon: 'pi pi-fw pi-user-plus',
           },
           {
-            label: 'Modificar médico',
-            icon: 'pi pi-fw pi-user-minus',
-          },
-          {
             label: 'Listar médicos',
+            routerLink: ["view-doctors"],
             icon: 'pi pi-fw pi-users',
           },
         ],
-      },
-      {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off',
       },
     ];
   }

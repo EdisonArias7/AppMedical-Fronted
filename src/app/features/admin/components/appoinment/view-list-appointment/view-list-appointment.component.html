@@ -1,0 +1,43 @@
+<div class="card">
+    <h5>Lista de Citas</h5>
+    <p-table #dt [value]="appointments" editMode="row" [globalFilterFields]="['id_appointment','hora_appointment','fecha_appointment','id_patient','id_doctor','consultorio_appointment']">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Manage Appointments</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-rows>
+            <tr >
+                <th pSortableColumn="id">Id<p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="hora">Hora<p-sortIcon field="hora"></p-sortIcon></th>
+                <th pSortableColumn="fecha">Fecha<p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="id_paciente">Id Paciente<p-sortIcon field="quantity"></p-sortIcon></th>
+                <th pSortableColumn="id_medico">Id Doctor<p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="consultorio">Consultorio<p-sortIcon field="price"></p-sortIcon></th>
+
+                <th pSortableColumn="Opciones">Opciones<p-sortIcon field="price"></p-sortIcon></th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="rowData">
+                <td>{{rowData.id_appointment}}</td>
+                <td>{{rowData.hora_appointment}}</td>
+                <td>{{rowData.fecha_appointment}}</td>
+                <td>{{rowData.id_patient}}</td>
+                <td>{{rowData.id_doctor}}</td>
+                <td>{{rowData.consultorio_appointment}}</td>
+                <td >
+                    <button  (click)="modify(rowData)" class="pi pi-user-edit" aria-label="Editar">Editar</button>
+                    <button  (click)= "delete(rowData)" class="pi pi-user-minus" aria-label="Eliminar">Eliminar</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+

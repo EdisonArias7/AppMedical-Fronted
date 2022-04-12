@@ -1,5 +1,5 @@
 <div class="toolbar" role="banner">
-  <span class="crearPaciente">Crear cita</span>
+  <span class="crearPaciente">Agregar cita</span>
   <div class="spacer center-left"></div>
   <a>
     <svg>
@@ -17,15 +17,23 @@
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form">
+          <form class="example-form" [formGroup]="form_appointment" #f="ngForm">
             <div class="field col-12 md:col-4">
               <h5>Id</h5>
               <input
                 type="text"
                 inputId="inputnumber"
                 pInputText
+                formControlName="id_appointment"
                 placeholder="Ingrese el identificador de cita"
+                required="true"
               />
+              <small
+                *ngIf="
+                  form_appointment.get('id_appointment').hasError('pattern')
+                "
+                >Por favor ingrese un formato valido(0-9)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -34,6 +42,9 @@
                 [timeOnly]="true"
                 hourFormat="12"
                 inputId="timeonly"
+                formControlName="hora_appointment"
+                placeholder="Ingrese la hora de la cita"
+                [minDate]="minDate"
               ></p-calendar>
             </div>
 
@@ -41,8 +52,38 @@
               <h5>Fecha de la cita</h5>
               <p-calendar
                 [showIcon]="true"
+                name="appo_date"
+                id="date"
                 inputId="icon"
+                formControlName="fecha_appointment"
+                placeholder="Ingrese la fecha de la cita"
+                [minDate]="minDate"
               ></p-calendar>
+            </div>
+
+            <div class="field col-12 md:col-4">
+              <h5>Paciente</h5>
+              <p-dropdown
+                [options]="patientList"
+                placeholder="Seleccione un paciente"
+                optionLabel="id_patient"
+                [showClear]="true"
+                formControlName="id_patient"
+               
+              >
+              </p-dropdown>
+            </div>
+
+            <div class="field col-12 md:col-4">
+              <h5>Medico</h5>
+              <p-dropdown
+                [options]="doctorList"
+                placeholder="Seleccione un medico"
+                optionLabel="id_doctor"
+                [showClear]="true"
+                formControlName="id_doctor"
+              >
+              </p-dropdown>
             </div>
 
             <div class="field col-12 md:col-4">
@@ -51,14 +92,22 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="consultorio_appointment"
                 placeholder="Ingrese el Consultorio"
+                required="true"
               />
             </div>
-
           </form>
         </div>
       </div>
-      <button pButton type="button" label="Agregar"></button>
+      <br>
+      <button
+        pButton
+        type="button"
+        (click)="registro()"
+        label="Agregar Cita"
+        [disabled]="f.invalid"
+      ></button>
     </div>
   </div>
 </div>

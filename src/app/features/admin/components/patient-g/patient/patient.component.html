@@ -17,15 +17,20 @@
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form">
+          <form class="example-form" [formGroup]="form_patient" #f="ngForm">
             <div class="field col-12 md:col-4">
               <h5>Cedula</h5>
               <input
                 type="text"
-                inputId="inputnumber"
+                id="inputtext"
                 pInputText
+                formControlName="id_patient"
                 placeholder="Ingrese su cedula"
+                required="true"
               />
+              <small *ngIf="form_patient.get('id_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(0-9)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -34,8 +39,14 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="name_patient"
                 placeholder="Ingrese su nombre"
+                required="true"
               />
+              <small
+                *ngIf="form_patient.get('name_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
             <div class="field col-12 md:col-4">
               <h5>Apellido</h5>
@@ -43,8 +54,15 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="lastname_patient"
                 placeholder="Ingrese su apellido"
+                required="true"
               />
+        
+              <small
+                *ngIf="form_patient.get('lastname_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
             <div class="field col-12 md:col-4">
               <h5>Sexo</h5>
@@ -52,8 +70,15 @@
                 type="text"
                 id="inputtext"
                 pInputText
+                formControlName="sexo_patient"
                 placeholder="Ingrese su genero"
+                required="true"
               />
+        
+              <small
+                *ngIf="form_patient.get('sexo_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
@@ -62,23 +87,45 @@
                 type="text"
                 inputId="inputnumber"
                 pInputText
+                formControlName="telefono_patient"
                 placeholder="Ingrese su telefono"
+                required="true"
               />
+          
+              <small
+                *ngIf="form_patient.get('telefono_patient').hasError('pattern')"
+                >Por favor ingrese un formato valido(0-9)</small
+              >
             </div>
 
             <div class="field col-12 md:col-4">
-                <h5>Direccion</h5>
-                <input
-                  type="text"
-                  id="inputtext"
-                  pInputText
-                  placeholder="Ingrese su direccion"
-                />
-              </div>
+              <h5>Direccion</h5>
+              <input
+                type="text"
+                id="inputtext"
+                pInputText
+                formControlName="direccion_patient"
+                placeholder="Ingrese su direccion"
+                required="true"
+              />
+              <small
+                *ngIf="
+                  form_patient.get('direccion_patient').hasError('pattern')
+                "
+                >Por favor ingrese un formato valido(A-Z)</small
+              >
+            </div>
           </form>
         </div>
       </div>
-      <button pButton type="button" label="Agregar"></button>
+      <br>
+      <button
+        pButton
+        type="button"
+        (click)="registro()"
+        label="Agregar Paciente"
+        [disabled]="f.invalid"
+      ></button>
     </div>
   </div>
 </div>

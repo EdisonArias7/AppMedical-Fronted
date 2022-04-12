@@ -1,5 +1,5 @@
 <div class="toolbar" role="banner">
-  <span class="crearPaciente">Modificar Paciente</span>
+  <span class="crearPaciente">Modificar Medico</span>
   <div class="spacer center-left"></div>
   <a>
     <svg>
@@ -17,18 +17,18 @@
     <div class="p-fluid grid">
       <div class="card">
         <div class="p-fluid grid">
-          <form class="example-form" [formGroup]="form_patient" #f="ngForm">
+          <form class="example-form" [formGroup]="form_doctor" #f="ngForm">
             <div class="field col-12 md:col-4">
-              <h5>Cedula</h5>
+              <h5>Id</h5>
               <input
                 type="text"
-                id="inputtext"
+                inputId="inputnumber"
                 pInputText
-                formControlName="id_patient"
-                placeholder="Ingrese su cedula"
+                formControlName="id_doctor"
+                placeholder="Ingrese el id del medico"
                 required="true"
               />
-              <small *ngIf="form_patient.get('id_patient').hasError('pattern')"
+              <small *ngIf="form_doctor.get('id_doctor').hasError('pattern')"
                 >Por favor ingrese un formato valido(0-9)</small
               >
             </div>
@@ -39,12 +39,11 @@
                 type="text"
                 id="inputtext"
                 pInputText
-                formControlName="name_patient"
+                formControlName="name_doctor"
                 placeholder="Ingrese su nombre"
                 required="true"
               />
-              <small
-                *ngIf="form_patient.get('name_patient').hasError('pattern')"
+              <small *ngIf="form_doctor.get('name_doctor').hasError('pattern')"
                 >Por favor ingrese un formato valido(A-Z)</small
               >
             </div>
@@ -54,28 +53,29 @@
                 type="text"
                 id="inputtext"
                 pInputText
-                formControlName="lastname_patient"
+                formControlName="lastname_doctor"
                 placeholder="Ingrese su apellido"
                 required="true"
               />
               <small
-                *ngIf="form_patient.get('lastname_patient').hasError('pattern')"
+                *ngIf="form_doctor.get('lastname_doctor').hasError('pattern')"
                 >Por favor ingrese un formato valido(A-Z)</small
               >
             </div>
+
             <div class="field col-12 md:col-4">
-              <h5>Sexo</h5>
+              <h5>Cedula</h5>
               <input
                 type="text"
-                id="inputtext"
+                inputId="inputnumber"
                 pInputText
-                formControlName="sexo_patient"
-                placeholder="Ingrese su genero"
+                formControlName="cedula_doctor"
+                placeholder="Ingrese su cedula"
                 required="true"
               />
               <small
-                *ngIf="form_patient.get('sexo_patient').hasError('pattern')"
-                >Por favor ingrese un formato valido(A-Z)</small
+                *ngIf="form_doctor.get('cedula_doctor').hasError('pattern')"
+                >Por favor ingrese un formato valido(0-9)</small
               >
             </div>
 
@@ -85,12 +85,12 @@
                 type="text"
                 inputId="inputnumber"
                 pInputText
-                formControlName="telefono_patient"
+                formControlName="telefono_doctor"
                 placeholder="Ingrese su telefono"
                 required="true"
               />
               <small
-                *ngIf="form_patient.get('telefono_patient').hasError('pattern')"
+                *ngIf="form_doctor.get('telefono_doctor').hasError('pattern')"
                 >Por favor ingrese un formato valido(0-9)</small
               >
             </div>
@@ -101,14 +101,12 @@
                 type="text"
                 id="inputtext"
                 pInputText
-                formControlName="direccion_patient"
+                formControlName="direccion_doctor"
                 placeholder="Ingrese su direccion"
                 required="true"
               />
               <small
-                *ngIf="
-                  form_patient.get('direccion_patient').hasError('pattern')
-                "
+                *ngIf="form_doctor.get('direccion_doctor').hasError('pattern')"
                 >Por favor ingrese un formato valido(A-Z)</small
               >
             </div>
@@ -120,7 +118,7 @@
         pButton
         type="button"
         (click)="edit()"
-        label="Modificar Paciente"
+        label="Modificar Doctor"
         [disabled]="f.invalid"
       ></button>
     </div>
