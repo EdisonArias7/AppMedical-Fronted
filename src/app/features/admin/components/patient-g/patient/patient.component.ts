@@ -7,6 +7,7 @@ import {
   FormBuilder,
   FormArray,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   PatientService,
 } from '../../../../../services/patient.service';
@@ -20,7 +21,7 @@ export class PatientComponent implements OnInit {
   form_patient: FormGroup;
   SERVER_URL = 'http://localhost:3000/api/patient';
 
-  constructor(private fb: FormBuilder, private patientService: PatientService) {
+  constructor(private fb: FormBuilder, private patientService: PatientService,private routes: Router) {
     this.form_patient = new FormGroup({
       id_patient: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
       name_patient: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
@@ -57,7 +58,9 @@ export class PatientComponent implements OnInit {
         .subscribe((resp) => {
           console.log(resp);
         });
+      this.routes.navigate(['view-patients']);  
       this.form_patient.reset();
     }, 1000);
+
   }
 }

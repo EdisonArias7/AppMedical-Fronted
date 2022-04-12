@@ -5,6 +5,7 @@ import { Patient } from '../../patient-g/interfaces/patient.interface';
 import { DoctorService } from '../../../../../services/doctor.service';
 import { Doctor } from '../../doctor/interfaces/doctor.interface';
 import { AppointmentService } from '../../../../../services/appointment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-appointment',
@@ -14,7 +15,7 @@ import { AppointmentService } from '../../../../../services/appointment.service'
 export class AddAppointmentComponent implements OnInit {
   rangeDates: Date[] = [];
   minDate = new Date();
-  minDate2 = new Date(); //Jan 1 2016
+  minDate2 = new Date(); 
   maxDate: Date = new Date();
   
 
@@ -26,6 +27,7 @@ export class AddAppointmentComponent implements OnInit {
   constructor(private patientService: PatientService,
     private doctorService: DoctorService,
     private appointmentService: AppointmentService,
+    private routes: Router,
     private fb: FormBuilder) {
       this.form_appointment = new FormGroup({
         id_appointment: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
@@ -89,12 +91,6 @@ export class AddAppointmentComponent implements OnInit {
     console.log(this.form_appointment.value);
     const data = this.form_appointment.value;
 
-    // console.log("hora: " + this.form_appointment.get('fecha_appointment').value.toISOString().split('T')[0]);
-    // console.log("hora: " + this.form_appointment.get('hora_appointment').value.toLocaleTimeString());
-
-    // console.log("hora: " + this.form_appointment.get('id_patient').value.id_patient);
-    // console.log("hora: " + this.form_appointment.get('id_doctor').value.id_doctor);
-
     setTimeout(() => {
       
       const body = {
@@ -111,7 +107,8 @@ export class AddAppointmentComponent implements OnInit {
           console.log(resp);
         });
       this.form_appointment.reset();
-    }, 1000);
+      this.routes.navigate(['view-appointments']);
+    }, 500);
 
   }
 

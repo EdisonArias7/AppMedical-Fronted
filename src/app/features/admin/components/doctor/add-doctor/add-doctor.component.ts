@@ -6,6 +6,7 @@ import {
   FormBuilder,
   FormArray,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   DoctorService,
 } from '../../../../../services/doctor.service';
@@ -19,7 +20,7 @@ export class AddDoctorComponent implements OnInit {
   form_doctor: FormGroup;
   SERVER_URL = 'http://localhost:3000/doctor';
 
-  constructor(private fb: FormBuilder, private doctorService: DoctorService) { 
+  constructor(private fb: FormBuilder, private doctorService: DoctorService, private routes: Router) { 
     this.form_doctor = new FormGroup({
       id_doctor: new FormControl('', [Validators.required,Validators.pattern(/^[0-9]+$/)]),
       name_doctor: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]{2,254}")]),
@@ -57,7 +58,8 @@ export class AddDoctorComponent implements OnInit {
           console.log(resp);
         });
       this.form_doctor.reset();
-    }, 1000);
+      this.routes.navigate(['view-doctors']);
+    }, 500);
   }
 
 }
